@@ -139,14 +139,16 @@ A为当前的名称，B 为将要修改后的名称
 
 ### 5、合衍（rebase）
 
+rebase 和 merger 最终结果没有任何区别，但是变基使得提交历史更加整洁。
+
+### 一个例子
+
     git rebase --onto master server client
 
-这基本上等于在说“检出 client 分支,找出 client 分支和 server 分支的共同祖先之 后的变化,然后把它们在 master 上重演一遍”。
+你创建了一个主题分支 server，为服务端添加了一些功能，提交了 C3 和 C4。 然后从 C3 上创建了主题分支 client，为客户端添加了一些功能，提交了 C8 和 C9。 最后，你回到 server 分支，又提交了 C10。
 
-等价于
+![Uploading image.png…](https://git-scm.com/book/en/v2/images/interesting-rebase-1.png)
 
-    git checkout master
-    git merge client
 
 ##### 注：永远不要rebase那些已经推送到master上的分支
 
